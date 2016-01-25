@@ -1,9 +1,1 @@
-{
-  "service": {
-    "name": "{{ consul_service_name }}",
-    "tags": {{ consul_service_tags|to_nice_json }}
-    {% if consul_service_port is defined and consul_service_port %}
-      ,"port": {{ consul_service_port }}
-    {% endif %}
-  }
-}
+{{ consul_service | to_nice_json }}

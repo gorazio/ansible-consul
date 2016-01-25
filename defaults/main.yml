@@ -68,5 +68,17 @@ consul_install_consulate: false
 consul_node_name: "{{ ansible_hostname }}"
 
 consul_service_setup: false
-consul_service_name: "default"
-consul_service_tags: ["master"]
+consul_service:
+  service:
+    name: "default"
+    tags:
+      - master
+
+consul_services_setup: false
+consul_services:
+  services:
+    - name: "name"
+      id: "id"
+      tags:
+        - "tag1"
+        - "tag2"

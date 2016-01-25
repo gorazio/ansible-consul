@@ -170,10 +170,21 @@
 - name: consul service config file
   template: >
     src=service.json.j2
-    dest={{ consul_config_dir }}/{{ consul_service_name }}.json
+    dest={{ consul_config_dir }}/{{ consul_service.service.name }}.json
     owner={{consul_user}}
     group={{consul_group}}
     mode=0755
   when: consul_service_setup
+  notify:
+    - restart consul
+
+- name: consul services config file
+  template: >
+    src=services.json.j2
+    dest={{ consul_config_dir }}/services.json
+    owner={{consul_user}}
+    group={{consul_group}}
+    mode=0755
+  when: consul_services_setup
   notify:
     - restart consul
